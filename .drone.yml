@@ -30,7 +30,19 @@ pipeline:
         registry.cn-hangzhou.aliyuncs.com/chendachao/stone.chendachao.top:latest
         /bin/sh -c "rm -rf /webapps/stone/; cp -rf stone /webapps;"
 
-
+  telegram-notify:
+      image: appleboy/drone-telegram
+      token: 440588887:AAFrW0KK9YHwf_5CYVsjzTtrvfppgGPmsWM
+      to: chendachao
+      location:
+            - 24.9163213,121.1424972
+            - 24.9263213,121.1224972
+      message: >
+        {{#success build.status}}
+          build {{build.number}} succeeded. Good job.
+        {{else}}
+          build {{build.number}} failed. Fix me please.
+        {{/success}}
 
 
 
