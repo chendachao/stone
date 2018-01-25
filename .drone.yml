@@ -1,0 +1,39 @@
+pipeline:
+
+  initialize:
+    image: node:8.9.3
+    commands:
+      - npm i yarn -g
+      - yarn install
+
+  build:
+    image: node:8.9.3
+    commands:
+      - yarn build
+
+  publish:
+    image: plugins/docker
+    registry: registry.cn-hangzhou.aliyuncs.com
+    repo: registry.cn-hangzhou.aliyuncs.com/chendachao/stone.chendachao.top
+    secrets: [ docker_username, docker_password ]
+    tags: latest
+
+  deploy:
+    image: appleboy/drone-ssh
+    host: chendachao.top
+    username: root
+    secrets: [ ssh_key ]
+    script:
+      - docker pull registry.cn-hangzhou.aliyuncs.com/chendachao/stone.chendachao.top:latest
+      - docker run --rm
+        --volumes-from=nginx
+        registry.cn-hangzhou.aliyuncs.com/chendachao/stone.chendachao.top:latest
+        /bin/sh -c "rm -rf /webapps/stone/; cp -rf stone /webapps;"
+
+
+
+
+
+
+
+
