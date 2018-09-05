@@ -8,9 +8,23 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "rm -rf dist && deploy-to-git"
   },
   "private": true,
+  "config": {
+    "deployToGit": {
+      "repository": "https://github.com/chendachao/stone.git",
+      "branch": "gh-pages",
+      "folder": "dist",
+      "script": "npm run build",
+      "commit": "Publishing $npm_package_version",
+      "user": {
+        "name": "Larry Chen",
+        "email": "chendachao@outlook.com"
+      }
+    }
+  },
   "dependencies": {
     "@angular/animations": "^5.0.0",
     "@angular/common": "^5.0.0",
@@ -34,6 +48,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "codelyzer": "^4.0.1",
+    "deploy-to-git": "^0.1.5",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",
