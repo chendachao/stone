@@ -1,0 +1,20 @@
+name: Stone CI
+
+on: [push]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        version: 12
+    - run: npm install-ci-test
+  publish:
+    needs: [build]
+    steps:
+    - uses: actions/github-packages@master
