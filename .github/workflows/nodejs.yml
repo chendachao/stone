@@ -3,8 +3,9 @@ name: Node CI
 on: [push]
 
 jobs:
+
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     strategy:
       matrix:
         node-version: [12.x]
@@ -18,23 +19,23 @@ jobs:
       run: |
         npm install
         npm run build --if-present
+        npm run ci
         npm run test
-        npm run e2e:ci
       env:
         CI: true
+
   publish:
     needs: [build]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     strategy:
       matrix:
         node-version: [12.x]
     steps:
+    - name: Deploy
     - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm deploy
-      run: npm run deploy
+    - run: npm run deploy
       env:
         CI: true
