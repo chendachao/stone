@@ -31,11 +31,11 @@ jobs:
       matrix:
         node-version: [12.x]
     steps:
-    - name: Deploy
-      uses: actions/checkout@v1
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm run deploy
+    - name: Deploy
+      run: npm run deploy
       env:
         CI: true
