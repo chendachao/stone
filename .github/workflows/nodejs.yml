@@ -25,7 +25,17 @@ jobs:
   publish:
     needs: [build]
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
-    - uses: actions/github-packages@master
-    - name: publish
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm deploy
       run: npm run deploy
+      env:
+        CI: true
