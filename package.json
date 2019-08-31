@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "ci": "cross-env HEADLESS=true ng e2e",
+    "e2e:ci": "cross-env HEADLESS=true ng e2e",
     "deploy": "rm -rf dist && deploy-to-git"
   },
   "private": true,
