@@ -41,6 +41,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Deploy
       run: |
+        pwd
+        ls
+        ls dist
         npm install
         # npm run deploy
       env:
