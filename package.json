@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "e2e:ci": "cross-env HEADLESS=true ng e2e",
-    "deploy": "bash scripts/publish.js"
+    "deploy": "node scripts/publish.js"
   },
   "private": true,
   "dependencies": {
