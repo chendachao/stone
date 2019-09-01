@@ -54,7 +54,7 @@
     "deployToGit": {
       "repository": "https://github.com/chendachao/stone.git",
       "branch": "gh-pages",
-      "folder": "dist",
+      "folder": "tmp",
       "script": "npm run build",
       "commit": "Publishing $npm_package_version",
       "user": {
