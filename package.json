@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "e2e:ci": "cross-env HEADLESS=true ng e2e",
-    "deploy": "node scripts/publish.js"
+    "publish": "node scripts/publish.js",
+    "deploy": "git subtree push --prefix dist/stone origin gh-pages"
   },
   "private": true,
   "dependencies": {
