@@ -52,7 +52,7 @@
   },
   "config": {
     "deployToGit": {
-      "repository": "https://$GITHUB_TOKEN@github.com/chendachao/stone.git",
+      "repository": "https://$GH_TOKEN@github.com/chendachao/stone.git",
       "branch": "gh-pages",
       "folder": "tmp",
       "script": "npm run build",
