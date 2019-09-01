@@ -46,7 +46,6 @@ jobs:
         echo $GITHUB_TOKEN
         npm install
         npm run build
-        cd dist/stone && git push --tags https://$GITHUB_TOKEN@github.com/chendachao/stone.git gh-pages
         npm run deploy
       env:
         CI: true

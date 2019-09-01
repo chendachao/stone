@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "e2e:ci": "cross-env HEADLESS=true ng e2e",
-    "deploy": "rm -rf dist && deploy-to-git"
+    "deploy": "bash scripts/publish.js"
   },
   "private": true,
   "dependencies": {
@@ -36,7 +36,7 @@
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
     "cross-env": "5.2.0",
-    "deploy-to-git": "^0.1.5",
+    "gh-pages": "^2.1.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -49,18 +49,5 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
-  },
-  "config": {
-    "deployToGit": {
-      "repository": "https://$GH_TOKEN@github.com/chendachao/stone.git",
-      "branch": "gh-pages",
-      "folder": "tmp",
-      "script": "npm run build",
-      "commit": "Publishing $npm_package_version",
-      "user": {
-        "name": "Larry Chen",
-        "email": "chendachao@outlook.com"
-      }
-    }
   }
 }
