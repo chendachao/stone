@@ -11,7 +11,7 @@
     "e2e": "ng e2e",
     "e2e:ci": "cross-env HEADLESS=true ng e2e",
     "publish": "node scripts/publish.js",
-    "deploy": "git subtree push --prefix dist/stone origin gh-pages"
+    "deploy": "ng deploy"
   },
   "private": true,
   "dependencies": {
