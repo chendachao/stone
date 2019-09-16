@@ -2,7 +2,6 @@
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
 process.env.CHROME_BIN = require('puppeteer').executablePath();
-const headless = process.env.HEADLESS;
 
 module.exports = function (config) {
   const codeCoverage = config.buildWebpack.options.codeCoverage;
@@ -21,7 +20,7 @@ module.exports = function (config) {
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
-    browsers: headless ? ['ChromeHeadlessNoSandbox'] : ['ChromeDebugging'],
+    browsers: codeCoverage ? ['ChromeHeadlessNoSandbox'] : ['ChromeDebugging'],
     customLaunchers: {
       ChromeHeadlessNoSandbox: {
         base: 'ChromeHeadless',
@@ -41,14 +40,25 @@ module.exports = function (config) {
       }
     },
     coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, './coverage/stone'),
-      reports: ['html', 'lcovonly', 'text-summary'],
-      fixWebpackSourcePaths: true
+      dir: require('path').join(__dirname, 'coverage'),
+      reports: ['html', 'cobertura'],
+      fixWebpackSourcePaths: true,
+      'report-config': {
+        html: {
+          subdir: 'report-html'
+        },
+        cobertura: {
+            file: 'cobertura.xml'
+        }
+      },
+      instrumenterOptions: {
+        istanbul: { noCompact: true }
+      }
     },
     reporters: ['progress', 'kjhtml', 'junit'],
     junitReporter: {
       outputDir: "testResults",
-      outputFile: "unit.xml"
+      outputFile: "TEST-unit.xml"
     },
     port: 9876,
     colors: true,
