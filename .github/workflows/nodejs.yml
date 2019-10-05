@@ -43,7 +43,7 @@ jobs:
       run: |
         npm install
         npm run build
-        npm run deploy
+        npm run publish
       env:
         CI: true
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
