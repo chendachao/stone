@@ -10,8 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "e2e:ci": "cross-env HEADLESS=true ng e2e",
-    "publish": "node scripts/publish.js",
-    "deploy": "ng deploy --no-silent --base-href=/stone/ --repo=https://$GITHUB_TOKEN@github.com/chendachao/stone.git --name='chendachao' --email=chendachao@outlook.com"
+    "publish": "cross-env GITHUB_TOKEN=$GITHUB_TOKEN node scripts/publish.js"
   },
   "private": true,
   "dependencies": {
